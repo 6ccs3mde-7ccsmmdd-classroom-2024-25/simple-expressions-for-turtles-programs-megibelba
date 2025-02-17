@@ -45,18 +45,18 @@ LoopStatement:
 ;
 
 Addition returns IntExpression:
-	Multiplication ({Addition.left=current} '+' right += Multiplication)*
+	Multiplication ({Addition.left=current} operator+=('+'|'-') right += Multiplication)*
 ;
 
 Multiplication returns IntExpression:
-	PrimaryExpression ({Multiplication.left=current} '*' right += PrimaryExpression)*
+	PrimaryExpression ({Multiplication.left=current} operator+=('*'|'/') right += PrimaryExpression)*
 ;
 
 PrimaryExpression returns IntExpression:
     IntLiteral | 
     VariableReference |
     '(' Addition ')'
-    ;
+;
 
 IntLiteral:
 	val = INT
