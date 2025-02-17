@@ -19,29 +19,26 @@ VariableDeclaration:
     'var' name=ID '=' value=INT
 ;
 
+LoopStatement:
+    count = Addition 'times' 'do' 
+    	statements+=Statement+ 
+    'end'
+;
+
 MoveStatement:
-    command=MoveCommand '(' steps=Addition ')'
+    command = MoveCommand '(' steps = Addition ')'
 ;
 
 enum MoveCommand:
-    forward='forward' | backward='backward'
+    forward | backward
 ;
 
 TurnStatement:
-    'turn' direction=TurnCommand 'by' degrees = REAL 'degrees'
+    'turn' direction = TurnCommand 'by' degrees = REAL 'degrees'
 ;
 
-REAL returns ecore::EFloat hidden():
-	INT '.' INT
-;
 enum TurnCommand:
-    left='left' | right='right'
-;
-
-LoopStatement:
-    count=Addition 'times' 'do' 
-    	statements+=Statement+ 
-    'end'
+    left | right
 ;
 
 Addition returns IntExpression:
@@ -64,4 +61,8 @@ IntLiteral:
 
 VariableReference:
 	var=[VariableDeclaration]
+;
+
+REAL returns ecore::EFloat hidden():
+	INT '.' INT
 ;
