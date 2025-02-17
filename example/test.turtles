@@ -3,8 +3,8 @@ var loopCounter = 10
 (loopCounter + 3) * 7 times do
     var stepCount = 10
     
-    forward(10 + (0*(9+1)))
+    forward(10)
     turn left by 50.3 degrees 
-    backward(10 + stepCount * stepCount) 
+    backward(10) 
     turn right by 45.7 degrees
 end
